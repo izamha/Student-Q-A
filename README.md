@@ -1,4 +1,4 @@
-#Sudent Q&A - A Question & Answer site for students
+# Sudent Q&A - A Question & Answer site for students
 
 ### What is this website for?
 
