@@ -2,7 +2,8 @@
 
 ### What is this website for?
 
-It's for asking any coding-related questions! Whether they are about any specific language, setting up your dev environment, or anything else, please feel free to use this website for it.
+It's for asking any question! Be it social, academic..etc. An then anyone informed who is a registered user of the platform shall reply/comment on your question.
+There is some kind of grade system which rewards a user points whenever they answer/comment on a question.
 
 
 ### What did you use to build this website?
