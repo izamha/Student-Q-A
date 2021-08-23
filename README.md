@@ -1,8 +1,8 @@
-#TSudent Q&A - An Q&A site for students
+#Sudent Q&A - A Question & Answer site for students
 
 ### What is this website for?
 
-It's for asking any question! Be it social, academic..etc. An then anyone informed who is a registered user of the platform shall reply/comment on your question.
+It's for asking any question! Be it social, academic..etc. An then anyone informed who is a registered user of the platform shall reply/comment on that question.
 There is some kind of grade system which rewards a user points whenever they answer/comment on a question.
 
 
