@@ -3,9 +3,8 @@ from django.urls import path, include
 from main.views import homeFeedView, testView, leaderboardView
 from pages.views import aboutPageView, searchView
 from questions.views import (questionView, newView, answerView,
-                            myQuestionsView, myAnswersView, questionVoteView,
-                            answerVoteView)
-
+                             myQuestionsView, myAnswersView, questionVoteView,
+                             answerVoteView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

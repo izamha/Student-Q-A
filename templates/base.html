@@ -1,59 +1,149 @@
 {% load static %}
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'jquery/jquery-3.6.0.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'fa/css/all.css' %}">
 
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'style.css' %}">
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-        <!-- development version, includes helpful console warnings -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-        <title>{% block title %}CSQA - An open-source Q&A website for coders{% endblock %}</title>
-    </head>
-    <body class="bg-light">
-        <div class="container" style="max-width:700">
-            <div class="card shadow-sm" style="margin-top: 20px">
-                <div class="card-header">
-                    <h6 style="margin-bottom: 0; margin-top: 7; display: inline-block">
-                        <a href="/" class="text-dark">CSQA
-                            {% if not current_user.is_authenticated %}
-                            <span class="site-title-second-half"> - An open-source Q&A website for coders</span>
-                            {% endif %}
-                        </a>
-                    </h6>
-                    <span style="float: right">
-                        <span class="csqa-nav">
-                            <a href="{% url 'search' %}" class="text-dark">Search</a> |
-                            {% if current_user.is_authenticated %}
-                            <a href="{% url 'my-questions' %}" class="text-dark">My Questions</a> |
-                            <a href="{% url 'my-answers' %}" class="text-dark">My Answers</a> |
-                            {% endif %}
-                            <a href="/question/new" class="text-dark" style="display: inline-block">
-                                New Question
+    <link rel="stylesheet" href="{% static 'styling/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styling/main.css' %}">
+
+    <!--<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    <!-- development version, includes helpful console warnings -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <title>
+        {% block title %}
+            Students QA - A Q&A website for students
+        {% endblock %}
+    </title>
+</head>
+<body class="bg-light">
+
+<div class="twitter-wrap">
+    <div class="side-left">
+        <ul class="menu">
+            <li class="menu-item">
+                <a href="/" class="menu-link active">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/question/new" class="menu-link">
+                    <i class="fas fa-question"></i>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{% url 'search' %}" class="menu-link">
+                    <i class="fas fa-search"></i>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link">
+                    <i class="fas fa-bookmark"></i>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="https://github.com/izamha" target="_blank" class="menu-link">
+                    <i class="fas fa-code"></i>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="#">
+                    <img class="user-img-30" alt="" src="{% static 'images/astro-mona.jpg' %}">
+                </a>
+
+                <div class="box">
+                    <img src="{% static 'images/astro-mona.jpg' %}" alt="" class="user-img-40">
+                    <p class="name">izamha</p>
+                    <p class="username">219000169</p>
+                    <div class="bio">Back-end developer | CS Year III</div>
+                    <div class="follow">
+                        <a href="#"><span>83</span> Questions</a>
+                        <a href="#"><span>830</span> Answers</a>
+                    </div>
+                </div>
+            </li>
+            <li class="menu-item">
+                <a href="/about" class="menu-link">
+                    <i class="fas fa-ellipsis-h"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="side-main">
+    <div class="top-fixed">
+        <a href="#" class="link-home">Sign In</a>
+    </div>
+    <div class="container" style="max-width:700px; margin-top: 3.5rem;">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="margin-top: 20px">
+                    <div class="card-header">
+                        <h6 style="margin-bottom: 0; margin-top: 7px; display: inline-block">
+                            <a href="/" class="text-dark">Student Q&A
+                                {% if not current_user.is_authenticated %}
+                                    <span class="site-title-second-half"> - A Q&A website for students</span>
+                                {% endif %}
                             </a>
+                        </h6>
+                        <span style="float: right">
+                        <span class="csqa-nav">
+                            {% if current_user.is_authenticated %}
+                                <a href="{% url 'my-questions' %}" class="text-dark">My Questions</a> |
+                                <a href="{% url 'my-answers' %}" class="text-dark">My Answers</a>
+                            {% endif %}
                         </span>
                     </span>
-                </div>
-                <div class="pb-2 pt-4 pr-4 pl-4">
-                    {% block content %}{% endblock %}
+                    </div>
+                    <div class="card-body">
+                        {% block content %}
+
+                        {% endblock %}
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container text-right" style="max-width:700; padding-right:21; padding-top:2; font-size:14; color: #6c757d; margin-bottom: 7px;">
-                <a href="/" class="text-secondary">Home</a> | 
-            {% if current_user.is_authenticated %}
-                <a href="/accounts/logout" class="text-secondary">Log out ({{current_user.username}}, {{current_user.points}} points)</a> | 
-            {% else %}
-                <a href="/accounts/signup" class="text-secondary">Sign up / log in</a> | 
-            {% endif %}
-                <a href="https://github.com/ykdojo/csqa" class="text-secondary" target="_blank">Source code</a> | 
-            <a href="/about" class="text-secondary">About</a> |
-            <a href="/leaderboard" class="text-secondary">Leaderboard</a>
+    </div>
+    <div class="container text-right"
+         style="max-width:700px; padding-right:21px; padding-top:2px; font-size:14px; color: #6c757d; margin-bottom: 7px;">
+        {% if current_user.is_authenticated %}
+            <a href="/accounts/logout" class="text-secondary">Log out
+                ({{ current_user.username }}, {{ current_user.points }} points)</a>
+        {% else %}
+            <a href="/accounts/signup" class="text-secondary">Sign up / log in</a>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col" style="text-align: center; margin-top: 2.5rem;">
+            <hr>
+            &copy;2021 Students Q&A
         </div>
-    </body>
-    <script>
-        axios.defaults.xsrfCookieName = 'csrftoken';
-        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
-    </script>
+    </div>
+</div>
+
+<div class="side-right">
+    <div class="side-right-box">
+        <i class="fa fa-question"></i>
+        <h5>What do we do?</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Est porro quisquam repellat ut vel voluptatibus!</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Est porro quisquam repellat ut vel voluptatibus!</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Est porro quisquam repellat ut vel voluptatibus!</p>
+    </div>
+</div>
+</body>
+<script>
+    axios.defaults.xsrfCookieName = 'csrftoken';
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+</script>
 </html>

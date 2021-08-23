@@ -3,7 +3,7 @@
 {% block content %}
 <div class="answers">
 {% for answer in page_obj %}
-    <p style="margin-bottom: 1">
+    <p style="margin-bottom: 1px">
         <a href="/question/{{answer.question.id}}">{{ answer.question.title }} <span class="text-secondary num-answers">({{ answer.question.num_answers }} comments)</span></a>
     </p>
     <div class='answer-block'>

@@ -11,9 +11,10 @@ whitenoise = "*"
 "psycopg2" = "*"
 dj-database-url = "*"
 djangorestframework = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 pylint = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
